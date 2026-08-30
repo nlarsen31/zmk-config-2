@@ -1,5 +1,3 @@
-#include <dt-bindings/zmk/kscan.h>
-
 / {
     chosen {
         zmk,input = &pmw3610;
