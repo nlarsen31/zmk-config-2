@@ -5,6 +5,7 @@
 
     spi4: spi@40024000 {
         compatible = "nordic,nrf-spi";
+        reg = <0x40024000 0x1000>;
         status = "okay";
         pinctrl-0 = <&spi4_default>;
         pinctrl-names = "default";
