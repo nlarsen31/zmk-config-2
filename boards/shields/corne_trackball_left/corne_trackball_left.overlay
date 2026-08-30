@@ -1,0 +1,42 @@
+#include <dt-bindings/zmk/kscan.h>
+
+/ {
+    chosen {
+        zmk,input = &pmw3610;
+    };
+
+    spi3: spi@40024000 {
+        compatible = "nordic,nrf-spi";
+        status = "okay";
+        pinctrl-0 = <&spi3_default>;
+        pinctrl-names = "default";
+        cs-gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
+
+        pmw3610: pmw3610@0 {
+            compatible = "pixart,pmw3610";
+            reg = <0>;
+            spi-max-frequency = <2000000>;
+            irq-gpios = <&gpio1 7 GPIO_ACTIVE_LOW>;
+
+            // Optional: PMW3610-specific settings
+            // cpi = <1600>;
+            // motion-pin-debounce = <2>;
+        };
+    };
+
+    // Input listener to enable pointing device support
+    zmk_input_listener: input_listener {
+        compatible = "zmk,input-listener";
+        device = <&pmw3610>;
+    };
+};
+
+&pinctrl {
+    spi3_default: spi3_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 13)>,
+                    <NRF_PSEL(SPIM_MISO, 1, 6)>,
+                    <NRF_PSEL(SPIM_SCK, 0, 22)>;
+        };
+    };
+};
