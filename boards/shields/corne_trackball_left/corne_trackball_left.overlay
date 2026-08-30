@@ -16,6 +16,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&pro_micro 0 GPIO_ACTIVE_LOW>;
+        evt-type = <0x02>;  /* EV_REL - relative motion */
     };
 };
 
