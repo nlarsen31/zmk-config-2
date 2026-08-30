@@ -3,10 +3,10 @@
         zmk,input = &pmw3610;
     };
 
-    spi3: spi@40024000 {
+    spi4: spi@40024000 {
         compatible = "nordic,nrf-spi";
         status = "okay";
-        pinctrl-0 = <&spi3_default>;
+        pinctrl-0 = <&spi4_default>;
         pinctrl-names = "default";
         cs-gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
 
@@ -30,7 +30,7 @@
 };
 
 &pinctrl {
-    spi3_default: spi3_default {
+    spi4_default: spi4_default {
         group1 {
             psels = <NRF_PSEL(SPIM_MOSI, 0, 13)>,
                     <NRF_PSEL(SPIM_MISO, 1, 6)>,
