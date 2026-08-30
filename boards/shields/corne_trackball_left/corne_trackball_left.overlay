@@ -8,6 +8,8 @@
         status = "okay";
         pinctrl-0 = <&spi4_default>;
         pinctrl-names = "default";
+        #address-cells = <1>;
+        #size-cells = <0>;
         cs-gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
 
         pmw3610: pmw3610@0 {
